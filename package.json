@@ -31,6 +31,8 @@
     "bluebird": "1.0.8"
   },
   "devDependencies": {
+    "grunt": "https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz",
+    "grunt-contrib-jshint": "https://registry.npmjs.org/grunt-contrib-jshint/-/grunt-contrib-jshint-0.9.2.tgz",
     "supertest": "^0.10.0"
   }
 }
