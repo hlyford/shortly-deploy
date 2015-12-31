@@ -96,6 +96,24 @@ module.exports = function(grunt) {
     grunt.task.run([ 'watch' ]);
   });
 
+  grunt.registerTask('prod-dev', function (target) {
+    // Running nodejs in a different process and displaying output on the main console
+    var startProd = grunt.util.spawn({
+         cmd: 'grunt',
+         grunt: true,
+         args: 'git push azure master'
+    });
+    var openSite = grunt.util.spawn({
+      cmd: 'grunt',
+      grunt: true,
+      args: 'azure site browse'
+    });
+    startProd.stdout.pipe(process.stdout);
+    startProd.stderr.pipe(process.stderr);
+        
+    //grunt.task.run([ 'watch' ]);
+  });
+
   ////////////////////////////////////////////////////
   // Main grunt tasks
   ////////////////////////////////////////////////////
@@ -110,6 +128,7 @@ module.exports = function(grunt) {
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
+      grunt.task.run([ 'prod-dev']);
       
     } else {
       grunt.task.run([ 'server-dev' ]);
