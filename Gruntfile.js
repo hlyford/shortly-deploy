@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         src: [
           'public/**/*.js'
         ], 
-        dest: 'public/build/production.js'
+        dest: 'public/dist/production.js'
       }
     },
 
@@ -28,8 +28,8 @@ module.exports = function(grunt) {
 
     uglify: {
       build: {
-        src: 'public/build/production.js',
-        dest: 'public/build/production.min.js'
+        src: 'public/dist/production.js',
+        dest: 'public/dist/production.min.js'
       }
     },
 
@@ -110,7 +110,7 @@ module.exports = function(grunt) {
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
-
+      
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
