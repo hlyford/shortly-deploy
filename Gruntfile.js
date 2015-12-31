@@ -70,6 +70,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'git push azure master'
       }
     },
   });
@@ -98,20 +99,24 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prod-dev', function (target) {
     // Running nodejs in a different process and displaying output on the main console
+    
+    /*
     var startProd = grunt.util.spawn({
-         cmd: 'grunt',
-         grunt: true,
-         args: 'git push azure master'
+         cmd: 'git',
+         grunt: false,
+         args: 'push azure master'
     });
     var openSite = grunt.util.spawn({
       cmd: 'grunt',
       grunt: true,
       args: 'azure site browse'
     });
+
     startProd.stdout.pipe(process.stdout);
     startProd.stderr.pipe(process.stderr);
-        
-    //grunt.task.run([ 'watch' ]);
+    */    
+    grunt.task.run([ 'shell' ]);
+
   });
 
   ////////////////////////////////////////////////////
